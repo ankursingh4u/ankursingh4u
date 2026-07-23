@@ -10,25 +10,35 @@
 ### 🤖 AI Coding Ledger &nbsp;<sub>auto-updated 23 Jul 2026</sub>
 
 <p align="center">
-  <img alt="Estimated cost" src="https://img.shields.io/badge/Estimated%20cost-%242%2C489.82-e8734a?style=flat-square" />
-  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.89B-38c7c0?style=flat-square" />
-  <img alt="Output" src="https://img.shields.io/badge/Output-10.7M-9aa6b8?style=flat-square" />
+  <img alt="Estimated cost" src="https://img.shields.io/badge/Estimated%20cost-%242%2C497.52-e8734a?style=flat-square" />
+  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.91B-38c7c0?style=flat-square" />
+  <img alt="Output" src="https://img.shields.io/badge/Output-10.8M-9aa6b8?style=flat-square" />
   <img alt="Active days" src="https://img.shields.io/badge/Active%20days-46-57c98a?style=flat-square" />
 </p>
 
 | Metric | Value |
 |---|---|
-| 💰 Estimated cost | **$2,489.82** (≈ $54.13 / active day) |
-| 🔢 Total tokens | **2.89B** (2,894,619,537) |
-| ✍️ Output tokens | **10.7M** across 7 models |
+| 💰 Estimated cost | **$2,497.52** (≈ $54.29 / active day) |
+| 🔢 Total tokens | **2.91B** (2,908,273,639) |
+| ✍️ Output tokens | **10.8M** across 7 models |
 | 📈 Peak day | **$326.50** on 30 Jun |
-| 🧠 Claude vs Codex | **74.6%** / 25.4% of spend |
+| 🧠 Claude vs Codex | **74.7%** / 25.3% of spend |
 
-**Top models by cost:** `claude-opus-4-8` $1,662.22 · `gpt-5.4` $327.48 · `gpt-5.5` $297.45 · `claude-fable-5` $181.23
+**Top models by cost:** `claude-opus-4-8` $1,669.92 · `gpt-5.4` $327.48 · `gpt-5.5` $297.45 · `claude-fable-5` $181.23
 
 📊 **Live dashboard → [ankursingh4u.github.io/ankursingh4u](https://ankursingh4u.github.io/ankursingh4u/)**
 
 <sub>Generated locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — spanning 05 Mar → 23 Jul 2026.</sub>
+
+---
+
+### ⏱️ Coding Activity &nbsp;<sub>via WakaTime</sub>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=ankursingh4u&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="WakaTime last 7 days" />
+</p>
+
+<sub>Time spent per language, last 7 days · <a href="https://wakatime.com/@ankursingh4u">full dashboard on WakaTime →</a></sub>
 
 ---
 

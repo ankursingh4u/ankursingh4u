@@ -16,9 +16,17 @@ if (-not $changes) {
 }
 
 $stamp = Get-Date -Format 'yyyy-MM-dd'
-Write-Host "==> Committing and pushing..." -ForegroundColor Cyan
+Write-Host "==> Committing..." -ForegroundColor Cyan
 git add -A
 git commit -m "chore: update AI coding ledger ($stamp)"
+
+Write-Host "==> Pushing to GitHub..." -ForegroundColor Cyan
 git push
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "!! Push FAILED (check your internet connection)." -ForegroundColor Red
+    Write-Host "   Your changes are committed locally and safe." -ForegroundColor Yellow
+    Write-Host "   Re-run this script when you're back online to push them." -ForegroundColor Yellow
+    exit 1
+}
 
 Write-Host "==> Done. Live at https://ankursingh4u.github.io/ankursingh4u/" -ForegroundColor Green

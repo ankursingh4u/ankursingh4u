@@ -133,6 +133,16 @@ const readme = `<h1 align="center">Hi 👋, I'm Ankur Singh</h1>
 
 ---
 
+### ⏱️ Coding Activity &nbsp;<sub>via WakaTime</sub>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="WakaTime last 7 days" />
+</p>
+
+<sub>Time spent per language, last 7 days · <a href="https://wakatime.com/@${USER}">full dashboard on WakaTime →</a></sub>
+
+---
+
 ### 📊 GitHub Stats
 
 <p align="center">
