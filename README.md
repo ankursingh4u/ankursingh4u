@@ -51,6 +51,28 @@
 | **[seo4ai](https://github.com/ankursingh4u/seo4ai)** | 📈 AuraRank — AI-driven SEO analysis & ranking toolkit | [AuraRank](https://aurarank-five.vercel.app) |
 | **[universal-Shopify-theme](https://github.com/ankursingh4u/universal-Shopify-theme)** | 🛍️ One Shopify theme, 13 niche presets — auto-adapting colors & content | — |
 
+<details>
+<summary>🗂️ <b>More builds &amp; experiments</b> &nbsp;<sub>(10 more)</sub></summary>
+
+<br/>
+
+| Project | What it is | Live |
+|---|---|---|
+| **[Portfolio-ankursingh.site](https://github.com/ankursingh4u/Portfolio-ankursingh.site)** | My developer portfolio site | [demo](https://ankursingh.site) |
+| **[agromind-app](https://github.com/ankursingh4u/agromind-app)** | AI farming assistant with real-time data | — |
+| **[otp-forwarder](https://github.com/ankursingh4u/otp-forwarder)** | OTP QA forwarder — Android app + dashboard + API | — |
+| **[rudranex](https://github.com/ankursingh4u/rudranex)** | Web app | [demo](https://rudranex.vercel.app) |
+| **[socialproofpopup](https://github.com/ankursingh4u/socialproofpopup)** | Social-proof popup widget | [demo](https://social-proofpopup.vercel.app) |
+| **[have-a-treat](https://github.com/ankursingh4u/have-a-treat)** | Dessert brand site for families & kids | — |
+| **[image-optimizer](https://github.com/ankursingh4u/image-optimizer)** | Image optimization tool | — |
+| **[yt-video-orchestrator](https://github.com/ankursingh4u/yt-video-orchestrator)** | YouTube video workflow automation | — |
+| **[Ai-Note](https://github.com/ankursingh4u/Ai-Note)** | AI-assisted note-taking app | — |
+| **[DocDrawer](https://github.com/ankursingh4u/DocDrawer)** | Document generation / drawer tool | — |
+
+<sub>…plus more on my <a href="https://github.com/ankursingh4u?tab=repositories">repositories page →</a></sub>
+
+</details>
+
 ---
 
 ### 📈 What I've shipped
@@ -100,7 +122,7 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C519.49-e8734a?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C520.48-e8734a?style=flat-square" />
   <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.94B-38c7c0?style=flat-square" />
   <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-46-57c98a?style=flat-square" />
 </p>

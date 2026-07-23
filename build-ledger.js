@@ -18,6 +18,19 @@ const PROJECT_BRIEFS = {
   'seo4ai':                 '📈 AuraRank — AI-driven SEO analysis & ranking toolkit',
   'universal-Shopify-theme':'🛍️ One Shopify theme, 13 niche presets — auto-adapting colors & content',
 };
+// Older / other builds — factual from repo names & live URLs (edit freely)
+const MORE_PROJECTS = [
+  { repo: 'Portfolio-ankursingh.site', desc: 'My developer portfolio site',                    demo: 'https://ankursingh.site' },
+  { repo: 'agromind-app',              desc: 'AI farming assistant with real-time data',        demo: '' },
+  { repo: 'otp-forwarder',             desc: 'OTP QA forwarder — Android app + dashboard + API', demo: '' },
+  { repo: 'rudranex',                  desc: 'Web app',                                          demo: 'https://rudranex.vercel.app' },
+  { repo: 'socialproofpopup',          desc: 'Social-proof popup widget',                        demo: 'https://social-proofpopup.vercel.app' },
+  { repo: 'have-a-treat',              desc: 'Dessert brand site for families & kids',           demo: '' },
+  { repo: 'image-optimizer',           desc: 'Image optimization tool',                          demo: '' },
+  { repo: 'yt-video-orchestrator',     desc: 'YouTube video workflow automation',                demo: '' },
+  { repo: 'Ai-Note',                   desc: 'AI-assisted note-taking app',                      demo: '' },
+  { repo: 'DocDrawer',                 desc: 'Document generation / drawer tool',                demo: '' },
+];
 // ───────────────────────────────────────────────────────────────────────
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -172,6 +185,19 @@ const readme = `<h1 align="center">Hey, I'm Ankur Singh 👋</h1>
 | **[PalmInsights](https://github.com/${USER}/PalmInsights)** | ${PROJECT_BRIEFS['PalmInsights']} | [demo](https://palm-drab.vercel.app) |
 | **[seo4ai](https://github.com/${USER}/seo4ai)** | ${PROJECT_BRIEFS['seo4ai']} | [AuraRank](https://aurarank-five.vercel.app) |
 | **[universal-Shopify-theme](https://github.com/${USER}/universal-Shopify-theme)** | ${PROJECT_BRIEFS['universal-Shopify-theme']} | — |
+
+<details>
+<summary>🗂️ <b>More builds &amp; experiments</b> &nbsp;<sub>(${MORE_PROJECTS.length} more)</sub></summary>
+
+<br/>
+
+| Project | What it is | Live |
+|---|---|---|
+${MORE_PROJECTS.map(p => `| **[${p.repo}](https://github.com/${USER}/${p.repo})** | ${p.desc} | ${p.demo ? `[demo](${p.demo})` : '—'} |`).join('\n')}
+
+<sub>…plus more on my <a href="https://github.com/${USER}?tab=repositories">repositories page →</a></sub>
+
+</details>
 
 ---
 
