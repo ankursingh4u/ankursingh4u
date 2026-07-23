@@ -5,6 +5,11 @@
 $ErrorActionPreference = 'Stop'
 Set-Location -Path $PSScriptRoot
 
+# Pull first so the WakaTime Action's commits (which update the coding-activity
+# block on GitHub) are merged in before we rebuild — avoids push conflicts.
+Write-Host "==> Syncing with GitHub..." -ForegroundColor Cyan
+git pull --rebase origin main 2>&1 | Out-Host
+
 Write-Host "==> Rebuilding ledger from ccusage..." -ForegroundColor Cyan
 node build-ledger.js
 

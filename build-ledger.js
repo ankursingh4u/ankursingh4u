@@ -99,65 +99,108 @@ const badge = (label, val, color) =>
   `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(val)}-${color}?style=flat-square" />`;
 const site = `https://${USER}.github.io/${USER}/`;
 
-const readme = `<h1 align="center">Hi 👋, I'm Ankur Singh</h1>
-<h3 align="center">Full-stack developer · building with AI</h3>
+// Preserve the detailed WakaTime block (written by the GitHub Action) across rebuilds
+let wakaBlock = '<!--START_SECTION:waka-->\n_⏳ Detailed coding-activity stats (most-productive time of day, days of the week, languages, editors) will appear here once WakaTime has collected a few days of data._\n<!--END_SECTION:waka-->';
+try {
+  const prev = fs.readFileSync(path.join(HERE, 'README.md'), 'utf8');
+  const m = prev.match(/<!--START_SECTION:waka-->[\s\S]*?<!--END_SECTION:waka-->/);
+  if (m) wakaBlock = m[0];
+} catch { /* first run */ }
 
+// tech-stack badge helper (simpleicons via shields.io)
+const tech = (label, slug, color, logoColor = 'white') =>
+  `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${color}?style=for-the-badge&logo=${slug}&logoColor=${logoColor}" />`;
+
+const readme = `<h1 align="center">Hey, I'm Ankur Singh 👋</h1>
+<h3 align="center">Full-stack developer — I ship AI apps, web tools &amp; Shopify experiences</h3>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1200&color=E8734A&center=true&vCenter=true&width=520&lines=TypeScript+%C2%B7+React+%C2%B7+Node+%C2%B7+Python;Building+in+public+since+2021;Turning+ideas+into+shipped+products" alt="typing" />
+</p>
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=${USER}&label=Profile%20views&color=e8734a&style=flat" alt="views" />
+  <a href="https://github.com/${USER}?tab=followers"><img src="https://img.shields.io/github/followers/${USER}?label=Followers&style=flat&color=38c7c0" alt="followers" /></a>
+  <a href="https://wakatime.com/@${USER}"><img src="https://img.shields.io/badge/WakaTime-tracked-57c98a?style=flat&logo=wakatime&logoColor=white" alt="wakatime" /></a>
 </p>
 
 ---
 
-### 🤖 AI Coding Ledger &nbsp;<sub>auto-updated ${generated}</sub>
+### 🛠️ Tech Stack
 
 <p align="center">
-  ${badge('Estimated cost', money(LEDGER.totalCost), 'e8734a')}
-  ${badge('Tokens', B(totalTokens), '38c7c0')}
-  ${badge('Output', B(totalOutput), '9aa6b8')}
-  ${badge('Active days', String(activeDays), '57c98a')}
+  ${tech('TypeScript', 'typescript', '3178C6')}
+  ${tech('JavaScript', 'javascript', 'F7DF1E', 'black')}
+  ${tech('React', 'react', '20232A')}
+  ${tech('Node.js', 'nodedotjs', '5FA04E')}
+  ${tech('Python', 'python', '3776AB')}
+  ${tech('Kotlin', 'kotlin', '7F52FF')}
 </p>
-
-| Metric | Value |
-|---|---|
-| 💰 Estimated cost | **${money(LEDGER.totalCost)}** (≈ ${money(LEDGER.avgPerDay)} / active day) |
-| 🔢 Total tokens | **${B(totalTokens)}** (${totalTokens.toLocaleString('en-US')}) |
-| ✍️ Output tokens | **${B(totalOutput)}** across ${modelList.length} models |
-| 📈 Peak day | **${money(peak.c)}** on ${peakDate} |
-| 🧠 Claude vs Codex | **${claudePct}%** / ${codexPct}% of spend |
-
-**Top models by cost:** ${modelList.slice(0, 4).map(m => `\`${m.n}\` ${money(m.c)}`).join(' · ')}
-
-📊 **Live dashboard → [${USER}.github.io/${USER}](${site})**
-
-<sub>Generated locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — spanning ${range}.</sub>
+<p align="center">
+  ${tech('HTML5', 'html5', 'E34F26')}
+  ${tech('CSS3', 'css3', '1572B6')}
+  ${tech('Tailwind', 'tailwindcss', '06B6D4')}
+  ${tech('Shopify', 'shopify', '7AB55C')}
+  ${tech('Git', 'git', 'F05032')}
+  ${tech('GitHub Actions', 'githubactions', '2088FF')}
+</p>
 
 ---
 
-### ⏱️ Coding Activity &nbsp;<sub>via WakaTime</sub>
+### 📈 What I've shipped
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="WakaTime last 7 days" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&custom_title=Ankur's%20Code%20Output" alt="stats" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Languages%20I%20write" alt="langs" />
 </p>
 
-<sub>Time spent per language, last 7 days · <a href="https://wakatime.com/@${USER}">full dashboard on WakaTime →</a></sub>
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USER}&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
+</p>
+
+<p align="center"><sub>👆 Commits &amp; lines shipped all-time, and my day-by-day coding streak.</sub></p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=${USER}&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="activity graph" />
+</p>
 
 ---
 
-### 📊 GitHub Stats
+### ⏱️ When &amp; how I code &nbsp;<sub>· live via WakaTime</sub>
+
+${wakaBlock}
 
 <p align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true" alt="stats" />
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="langs" />
+  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Coding%20time%20by%20language%20(last%207%20days)" alt="WakaTime languages" />
 </p>
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USER}&theme=tokyonight&hide_border=true" alt="streak" />
-</p>
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=${USER}&theme=tokyo-night&hide_border=true&area=true" alt="activity" />
-</p>
+
+<sub>⏱️ Real editor time — hours, languages &amp; time-of-day · <a href="https://wakatime.com/@${USER}">full breakdown on WakaTime →</a></sub>
+
+---
+
+### 🏆 Trophies
+
 <p align="center">
   <img src="https://github-profile-trophy.vercel.app/?username=${USER}&theme=tokyonight&no-frame=true&column=7&margin-w=8" alt="trophies" />
 </p>
+
+---
+
+<details>
+<summary>🤖 <b>Bonus: my AI-assisted coding ledger</b> &nbsp;<sub>(auto-updated ${generated})</sub></summary>
+
+<br/>
+
+<p align="center">
+  ${badge('AI spend', money(LEDGER.totalCost), 'e8734a')}
+  ${badge('Tokens', B(totalTokens), '38c7c0')}
+  ${badge('AI active days', String(activeDays), '57c98a')}
+</p>
+
+A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **${B(totalTokens)} tokens** across ${modelList.length} models, spanning ${range}.
+
+📊 **Full interactive dashboard → [${USER}.github.io/${USER}](${site})**
+
+</details>
 `;
 fs.writeFileSync(path.join(HERE, 'README.md'), readme);
 console.log('✓ README.md updated');
