@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AI Coding Ledger — Ankur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #0e1116;
+    --bg-grad: radial-gradient(1200px 600px at 82% -8%, #1a2130 0%, rgba(26,33,48,0) 60%), #0e1116;
+    --panel: #151a22; --panel-2: #1a212b; --line: #262e3a; --line-soft: #1e2530;
+    --ink: #e8ecf3; --ink-dim: #9aa6b8; --ink-faint: #667186;
+    --claude: #e8734a; --claude-soft: rgba(232,115,74,0.14);
+    --gpt: #38c7c0; --gpt-soft: rgba(56,199,192,0.14);
+    --shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 12px 40px -20px rgba(0,0,0,0.8);
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #f3f4f2; --bg-grad: radial-gradient(1200px 600px at 82% -8%, #e8ebf0 0%, rgba(232,235,240,0) 60%), #f3f4f2;
+    --panel: #ffffff; --panel-2: #f7f8f6; --line: #e2e4e0; --line-soft: #ecedea;
+    --ink: #1a1f27; --ink-dim: #55606f; --ink-faint: #8a95a5;
+    --claude: #c9552b; --claude-soft: rgba(201,85,43,0.10);
+    --gpt: #128a84; --gpt-soft: rgba(18,138,132,0.10);
+    --shadow: 0 1px 2px rgba(20,25,35,0.05), 0 16px 40px -28px rgba(20,25,35,0.35);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f3f4f2; --bg-grad: radial-gradient(1200px 600px at 82% -8%, #e8ebf0 0%, rgba(232,235,240,0) 60%), #f3f4f2;
+      --panel: #ffffff; --panel-2: #f7f8f6; --line: #e2e4e0; --line-soft: #ecedea;
+      --ink: #1a1f27; --ink-dim: #55606f; --ink-faint: #8a95a5;
+      --claude: #c9552b; --claude-soft: rgba(201,85,43,0.10);
+      --gpt: #128a84; --gpt-soft: rgba(18,138,132,0.10);
+      --shadow: 0 1px 2px rgba(20,25,35,0.05), 0 16px 40px -28px rgba(20,25,35,0.35);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg-grad); color: var(--ink); font-family: var(--sans);
+    -webkit-font-smoothing: antialiased; line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 72px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 34px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--claude); box-shadow: 0 0 0 4px var(--claude-soft); }
+  .brand b { font-weight: 650; letter-spacing: -0.01em; }
+  .brand .sub { color: var(--ink-faint); font: 500 12px/1 var(--mono); letter-spacing: 0.02em; }
+  .toggle { background: var(--panel); border: 1px solid var(--line); color: var(--ink-dim);
+    font: 600 12px/1 var(--mono); padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+  .toggle:hover { color: var(--ink); border-color: var(--ink-faint); }
+  .toggle:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
+  .hero { margin-bottom: 40px; }
+  .eyebrow { font: 600 11px/1 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(30px, 5.2vw, 52px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 680; margin: 0 0 14px; text-wrap: balance; max-width: 16ch; }
+  .hero h1 .accent { color: var(--claude); }
+  .hero p { color: var(--ink-dim); max-width: 58ch; margin: 0; font-size: 15.5px; }
+  .hero p code { font: 500 13px/1 var(--mono); background: var(--panel-2); border: 1px solid var(--line); padding: 2px 6px; border-radius: 5px; color: var(--ink); }
+  .figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 28px 0 40px; box-shadow: var(--shadow); }
+  .fig { background: var(--panel); padding: 22px 22px 20px; }
+  .fig .k { font: 600 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
+  .fig .v { font: 620 clamp(26px, 4vw, 38px)/1 var(--sans); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .fig .v small { font-size: 0.5em; color: var(--ink-faint); font-weight: 600; letter-spacing: 0; margin-left: 2px; }
+  .fig .note { margin-top: 8px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-dim); }
+  .fig.hl .v { color: var(--claude); }
+  section { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  .sec-head h2 { font-size: 15px; font-weight: 640; letter-spacing: 0.01em; margin: 0; }
+  .sec-head .meta { font: 500 12px/1 var(--mono); color: var(--ink-faint); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .chart-wrap { position: relative; }
+  canvas { display: block; width: 100%; height: 220px; }
+  .legend { display: flex; gap: 18px; margin-top: 14px; flex-wrap: wrap; }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; font: 500 12px/1 var(--mono); color: var(--ink-dim); }
+  .legend i { width: 20px; height: 3px; border-radius: 2px; display: inline-block; }
+  .months { display: flex; gap: 10px; align-items: flex-end; height: 180px; padding-top: 8px; }
+  .mo { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; height: 100%; justify-content: flex-end; }
+  .mo .bar { width: 100%; max-width: 74px; border-radius: 7px 7px 3px 3px; background: linear-gradient(180deg, var(--claude), var(--claude-soft)); position: relative; min-height: 4px; }
+  .mo .bar .cap { position: absolute; top: -22px; left: 0; right: 0; text-align: center; font: 600 12px/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mo .lbl { font: 500 11.5px/1 var(--mono); color: var(--ink-faint); }
+  .mo.zero .bar { background: repeating-linear-gradient(45deg, var(--line), var(--line) 4px, transparent 4px, transparent 8px); }
+  .mo.zero .bar .cap { color: var(--ink-faint); font-weight: 500; }
+  .models { display: flex; flex-direction: column; gap: 14px; }
+  .model { display: grid; grid-template-columns: 190px 1fr auto; align-items: center; gap: 16px; }
+  .model .name { display: flex; align-items: center; gap: 9px; font: 550 13px/1.2 var(--mono); }
+  .model .name .chip { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .model .name .fam { color: var(--ink-faint); font-size: 11px; }
+  .track { height: 10px; background: var(--panel-2); border: 1px solid var(--line-soft); border-radius: 6px; overflow: hidden; }
+  .track > i { display: block; height: 100%; border-radius: 5px; }
+  .model .cost { font: 600 13px/1 var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  .model .cost small { color: var(--ink-faint); font-weight: 500; display: block; font-size: 11px; margin-top: 3px; }
+  .splitbar { height: 12px; border-radius: 7px; overflow: hidden; display: flex; margin: 4px 0 22px; border: 1px solid var(--line); }
+  .splitbar i { height: 100%; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .split .card { display: flex; flex-direction: column; gap: 6px; }
+  .split .who { display: flex; align-items: center; gap: 8px; font: 600 12px/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); }
+  .split .who i { width: 9px; height: 9px; border-radius: 2px; }
+  .split .pct { font: 640 34px/1 var(--sans); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .split .amt { font: 500 12.5px/1 var(--mono); color: var(--ink-dim); }
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink-faint); font: 500 12.5px/1.6 var(--mono); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer code { color: var(--ink-dim); }
+  @media (max-width: 720px) {
+    .figures { grid-template-columns: 1fr; }
+    .model { grid-template-columns: 130px 1fr; }
+    .model .cost { grid-column: 2; text-align: left; }
+    .split { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span><b>AI Coding Ledger</b><span class="sub" id="user">ankursingh4u</span></div>
+    <button class="toggle" id="themeBtn" aria-label="Toggle color theme">◐ THEME</button>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">Local usage report · Claude Code + Codex</div>
+    <h1>Every token, every dollar — <span class="accent">one ledger.</span></h1>
+    <p>A running account of AI-assisted coding, read straight from the logs by <code>ccusage</code>. Spanning <span id="range"></span> across <span id="activeDays"></span> active days.</p>
+  </div>
+  <div class="figures">
+    <div class="fig hl"><div class="k">Estimated cost</div><div class="v" id="fCost"></div><div class="note" id="fCostNote"></div></div>
+    <div class="fig"><div class="k">Total tokens</div><div class="v" id="fTok"></div><div class="note" id="fTokNote"></div></div>
+    <div class="fig"><div class="k">Output written</div><div class="v" id="fOut"></div><div class="note" id="fOutNote"></div></div>
+  </div>
+  <section>
+    <div class="sec-head"><h2>Daily spend</h2><span class="meta" id="peakMeta"></span></div>
+    <div class="card">
+      <div class="chart-wrap"><canvas id="daily" aria-label="Daily cost trend chart"></canvas></div>
+      <div class="legend"><span><i style="background:var(--claude)"></i> Daily cost (USD)</span><span><i style="background:var(--gpt);opacity:.5"></i> 7-day average</span></div>
+    </div>
+  </section>
+  <section>
+    <div class="sec-head"><h2>By month</h2><span class="meta">estimated cost</span></div>
+    <div class="card"><div class="months" id="months"></div></div>
+  </section>
+  <section>
+    <div class="sec-head"><h2>Claude vs. Codex</h2><span class="meta">share of spend</span></div>
+    <div class="splitbar" id="splitbar"></div>
+    <div class="split" id="split"></div>
+  </section>
+  <section>
+    <div class="sec-head"><h2>By model</h2><span class="meta">ranked by cost</span></div>
+    <div class="card models" id="models-list"></div>
+  </section>
+  <footer>
+    <span>Generated from <code>npx ccusage</code> — data stays on your machine.</span>
+    <span id="stamp"></span>
+  </footer>
+</div>
+
+<script>
+/*LEDGER_START*/
+window.LEDGER = {
+  "user": "ankursingh4u",
+  "generated": "23 Jul 2026",
+  "range": "05 Mar → 23 Jul 2026",
+  "activeDays": 46,
+  "totalCost": 2471.71,
+  "totalTokens": 2862209789,
+  "outputTokens": 10681169,
+  "modelCount": 7,
+  "avgPerDay": 53.73,
+  "peak": {
+    "date": "30 Jun",
+    "cost": 326.5
+  },
+  "claudePct": 74.4,
+  "codexPct": 25.6,
+  "claudeCost": 1838.63,
+  "codexCost": 633.08,
+  "claudeModels": "opus 4 8 · fable 5 · opus 4 6 · haiku 4 5",
+  "codexModels": "gpt 5.4 · gpt 5.5 · gpt 5.3 codex",
+  "months": [
+    {
+      "m": "Mar",
+      "v": 264.65,
+      "z": false
+    },
+    {
+      "m": "Apr",
+      "v": 70.98,
+      "z": false
+    },
+    {
+      "m": "May",
+      "v": 0,
+      "z": true
+    },
+    {
+      "m": "Jun",
+      "v": 905.99,
+      "z": false
+    },
+    {
+      "m": "Jul",
+      "v": 1230.09,
+      "z": false
+    }
+  ],
+  "models": [
+    {
+      "n": "claude-opus-4-8",
+      "fam": "Claude",
+      "claude": true,
+      "c": 1644.11,
+      "t": 2158.5
+    },
+    {
+      "n": "gpt-5.4",
+      "fam": "Codex",
+      "claude": false,
+      "c": 327.48,
+      "t": 460.9
+    },
+    {
+      "n": "gpt-5.5",
+      "fam": "Codex",
+      "claude": false,
+      "c": 297.45,
+      "t": 99.2
+    },
+    {
+      "n": "claude-fable-5",
+      "fam": "Claude",
+      "claude": true,
+      "c": 181.23,
+      "t": 111.2
+    },
+    {
+      "n": "claude-opus-4-6",
+      "fam": "Claude",
+      "claude": true,
+      "c": 12.17,
+      "t": 7.5
+    },
+    {
+      "n": "gpt-5.3-codex",
+      "fam": "Codex",
+      "claude": false,
+      "c": 8.15,
+      "t": 20
+    },
+    {
+      "n": "claude-haiku-4-5",
+      "fam": "Claude",
+      "claude": true,
+      "c": 1.12,
+      "t": 5
+    }
+  ],
+  "daily": [
+    {
+      "d": "03-05",
+      "c": 0.61
+    },
+    {
+      "d": "03-06",
+      "c": 0.11
+    },
+    {
+      "d": "03-08",
+      "c": 2.81
+    },
+    {
+      "d": "03-09",
+      "c": 3.7
+    },
+    {
+      "d": "03-10",
+      "c": 6.85
+    },
+    {
+      "d": "03-11",
+      "c": 6.96
+    },
+    {
+      "d": "03-12",
+      "c": 13.49
+    },
+    {
+      "d": "03-13",
+      "c": 20.9
+    },
+    {
+      "d": "03-14",
+      "c": 10.47
+    },
+    {
+      "d": "03-16",
+      "c": 1.03
+    },
+    {
+      "d": "03-17",
+      "c": 7.23
+    },
+    {
+      "d": "03-18",
+      "c": 51.74
+    },
+    {
+      "d": "03-19",
+      "c": 55.03
+    },
+    {
+      "d": "03-20",
+      "c": 17.81
+    },
+    {
+      "d": "03-21",
+      "c": 1.21
+    },
+    {
+      "d": "03-24",
+      "c": 7.96
+    },
+    {
+      "d": "03-25",
+      "c": 10.62
+    },
+    {
+      "d": "03-30",
+      "c": 17.05
+    },
+    {
+      "d": "03-31",
+      "c": 29.07
+    },
+    {
+      "d": "04-02",
+      "c": 29.29
+    },
+    {
+      "d": "04-03",
+      "c": 11.96
+    },
+    {
+      "d": "04-04",
+      "c": 29.73
+    },
+    {
+      "d": "06-23",
+      "c": 2.62
+    },
+    {
+      "d": "06-24",
+      "c": 62.1
+    },
+    {
+      "d": "06-25",
+      "c": 114.03
+    },
+    {
+      "d": "06-26",
+      "c": 112.51
+    },
+    {
+      "d": "06-27",
+      "c": 129.63
+    },
+    {
+      "d": "06-29",
+      "c": 158.6
+    },
+    {
+      "d": "06-30",
+      "c": 326.5
+    },
+    {
+      "d": "07-01",
+      "c": 180.06
+    },
+    {
+      "d": "07-02",
+      "c": 146.25
+    },
+    {
+      "d": "07-03",
+      "c": 142.81
+    },
+    {
+      "d": "07-04",
+      "c": 112.91
+    },
+    {
+      "d": "07-06",
+      "c": 35.99
+    },
+    {
+      "d": "07-07",
+      "c": 78.76
+    },
+    {
+      "d": "07-08",
+      "c": 129.45
+    },
+    {
+      "d": "07-09",
+      "c": 78.14
+    },
+    {
+      "d": "07-10",
+      "c": 104.14
+    },
+    {
+      "d": "07-11",
+      "c": 54.51
+    },
+    {
+      "d": "07-13",
+      "c": 11.96
+    },
+    {
+      "d": "07-14",
+      "c": 16.13
+    },
+    {
+      "d": "07-16",
+      "c": 9.73
+    },
+    {
+      "d": "07-17",
+      "c": 8.76
+    },
+    {
+      "d": "07-20",
+      "c": 23.43
+    },
+    {
+      "d": "07-22",
+      "c": 53.46
+    },
+    {
+      "d": "07-23",
+      "c": 43.6
+    }
+  ]
+};
+/*LEDGER_END*/
+
+const L = window.LEDGER;
+const fmt = (n, d = 0) => n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const abbr = n => n >= 1e9 ? (n/1e9).toFixed(2)+'|B' : n >= 1e6 ? (n/1e6).toFixed(1)+'|M' : fmt(n);
+const put = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
+
+// figures + text
+put('user', L.user);
+put('range', L.range);
+put('activeDays', L.activeDays);
+const [ci, cd] = L.totalCost.toFixed(2).split('.');
+put('fCost', '$' + fmt(+ci) + '<small>.' + cd + '</small>');
+put('fCostNote', '≈ $' + L.avgPerDay.toFixed(2) + ' / active day');
+const [ti, tu] = abbr(L.totalTokens).split('|');
+put('fTok', ti + '<small>' + tu + '</small>');
+put('fTokNote', fmt(L.totalTokens) + ' processed');
+const [oi, ou] = abbr(L.outputTokens).split('|');
+put('fOut', oi + '<small>' + ou + '</small>');
+put('fOutNote', 'across ' + L.modelCount + ' models');
+put('peakMeta', 'peak · $' + L.peak.cost.toFixed(2) + ' on ' + L.peak.date);
+put('stamp', L.user + ' · ' + L.generated);
+
+// split
+put('splitbar', '<i style="background:var(--claude);width:' + L.claudePct + '%"></i><i style="background:var(--gpt);width:' + L.codexPct + '%"></i>');
+put('split',
+  '<div class="card"><div class="who"><i style="background:var(--claude)"></i> Claude</div>' +
+  '<div class="pct" style="color:var(--claude)">' + L.claudePct.toFixed(1) + '%</div>' +
+  '<div class="amt">$' + fmt(L.claudeCost, 2) + ' · ' + L.claudeModels + '</div></div>' +
+  '<div class="card"><div class="who"><i style="background:var(--gpt)"></i> Codex / GPT</div>' +
+  '<div class="pct" style="color:var(--gpt)">' + L.codexPct.toFixed(1) + '%</div>' +
+  '<div class="amt">$' + fmt(L.codexCost, 2) + ' · ' + L.codexModels + '</div></div>');
+
+// months
+const maxM = Math.max(...L.months.map(m => m.v));
+put('months', L.months.map(m => {
+  const h = m.z ? 6 : Math.max(6, (m.v / maxM) * 100);
+  return '<div class="mo ' + (m.z ? 'zero' : '') + '"><div class="bar" style="height:' + h + '%">' +
+    '<span class="cap">' + (m.z ? '—' : '$' + m.v.toFixed(0)) + '</span></div><div class="lbl">' + m.m + '</div></div>';
+}).join(''));
+
+// models
+const maxC = Math.max(...L.models.map(m => m.c));
+put('models-list', L.models.map(m => {
+  const col = m.claude ? 'var(--claude)' : 'var(--gpt)';
+  const w = Math.max(1.5, (m.c / maxC) * 100);
+  return '<div class="model"><div class="name"><span class="chip" style="background:' + col + '"></span>' +
+    m.n + '<span class="fam">' + m.fam + '</span></div>' +
+    '<div class="track"><i style="width:' + w + '%;background:' + col + '"></i></div>' +
+    '<div class="cost">$' + fmt(m.c, 2) + '<small>' + m.t.toFixed(1) + 'M tok</small></div></div>';
+}).join(''));
+
+// theme
+document.getElementById('themeBtn').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : cur === 'light' ? 'dark'
+    : (matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', next);
+  setTimeout(drawDaily, 30);
+});
+
+// daily chart
+const daily = L.daily;
+const avg = daily.map((_, i) => { const s = Math.max(0, i - 6); const sl = daily.slice(s, i + 1); return sl.reduce((a, b) => a + b.c, 0) / sl.length; });
+const cv = document.getElementById('daily');
+const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+function drawDaily() {
+  const dpr = window.devicePixelRatio || 1, W = cv.clientWidth, H = 220;
+  cv.width = W * dpr; cv.height = H * dpr;
+  const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr); ctx.clearRect(0, 0, W, H);
+  const padL = 44, padR = 8, padT = 14, padB = 22, cw = W - padL - padR, ch = H - padT - padB;
+  const max = Math.max(...daily.map(d => d.c));
+  const x = i => padL + (i / (daily.length - 1)) * cw, y = v => padT + ch - (v / max) * ch;
+  const line = css('--line'), faint = css('--ink-faint'), claude = css('--claude'), gpt = css('--gpt');
+  ctx.font = '11px ui-monospace, monospace'; ctx.textBaseline = 'middle';
+  const step = Math.max(50, Math.ceil(max / 3 / 50) * 50);
+  for (let g = 0; g <= max; g += step) { const yy = y(g);
+    ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(W - padR, yy); ctx.stroke();
+    ctx.fillStyle = faint; ctx.textAlign = 'right'; ctx.fillText('$' + g, padL - 8, yy); }
+  const grad = ctx.createLinearGradient(0, padT, 0, padT + ch);
+  grad.addColorStop(0, css('--claude-soft')); grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath(); ctx.moveTo(x(0), y(daily[0].c)); daily.forEach((d, i) => ctx.lineTo(x(i), y(d.c)));
+  ctx.lineTo(x(daily.length - 1), padT + ch); ctx.lineTo(x(0), padT + ch); ctx.closePath(); ctx.fillStyle = grad; ctx.fill();
+  ctx.beginPath(); daily.forEach((d, i) => i ? ctx.lineTo(x(i), y(d.c)) : ctx.moveTo(x(i), y(d.c)));
+  ctx.strokeStyle = claude; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.stroke();
+  ctx.beginPath(); avg.forEach((v, i) => i ? ctx.lineTo(x(i), y(v)) : ctx.moveTo(x(i), y(v)));
+  ctx.strokeStyle = gpt; ctx.globalAlpha = .55; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]); ctx.stroke();
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+  const pk = daily.reduce((a, b, i) => b.c > daily[a].c ? i : a, 0);
+  ctx.fillStyle = claude; ctx.beginPath(); ctx.arc(x(pk), y(daily[pk].c), 4, 0, 7); ctx.fill();
+  ctx.strokeStyle = css('--panel'); ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = faint; ctx.textAlign = 'center';
+  const n = daily.length - 1;
+  [0, Math.round(n*.25), Math.round(n*.5), Math.round(n*.75), n].forEach(i => ctx.fillText(daily[i].d, x(i), H - 8));
+}
+drawDaily();
+window.addEventListener('resize', drawDaily);
+</script>
+</body>
+</html>
