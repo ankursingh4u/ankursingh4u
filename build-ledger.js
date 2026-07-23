@@ -11,6 +11,15 @@ const path = require('path');
 const USER = 'ankursingh4u';
 const HERE = __dirname;
 
+// ── Featured project one-liners — EDIT THESE to your real descriptions ──
+const PROJECT_BRIEFS = {
+  'zenith-ai-brain':        '🧠 AI “second brain” — a Python engine for capturing & querying knowledge',
+  'PalmInsights':           '🖐️ AI-powered palm-reading & insights web app',
+  'seo4ai':                 '📈 AuraRank — AI-driven SEO analysis & ranking toolkit',
+  'universal-Shopify-theme':'🛍️ One Shopify theme, 13 niche presets — auto-adapting colors & content',
+};
+// ───────────────────────────────────────────────────────────────────────
+
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const isClaude = m => /claude|opus|sonnet|haiku|fable/i.test(m);
 const famName = m => isClaude(m) ? 'Claude' : 'Codex';
@@ -143,6 +152,26 @@ const readme = `<h1 align="center">Hey, I'm Ankur Singh 👋</h1>
   ${tech('Git', 'git', 'F05032')}
   ${tech('GitHub Actions', 'githubactions', '2088FF')}
 </p>
+
+---
+
+### 🚀 Featured Projects
+
+<p align="center">
+  <a href="https://github.com/${USER}/zenith-ai-brain"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=zenith-ai-brain&theme=tokyonight&hide_border=true" alt="zenith-ai-brain" /></a>
+  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
+</p>
+<p align="center">
+  <a href="https://aurarank-five.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=seo4ai&theme=tokyonight&hide_border=true" alt="seo4ai" /></a>
+  <a href="https://github.com/${USER}/universal-Shopify-theme"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=universal-Shopify-theme&theme=tokyonight&hide_border=true" alt="universal-Shopify-theme" /></a>
+</p>
+
+| Project | What it is | Live |
+|---|---|---|
+| **[zenith-ai-brain](https://github.com/${USER}/zenith-ai-brain)** | ${PROJECT_BRIEFS['zenith-ai-brain']} | — |
+| **[PalmInsights](https://github.com/${USER}/PalmInsights)** | ${PROJECT_BRIEFS['PalmInsights']} | [demo](https://palm-drab.vercel.app) |
+| **[seo4ai](https://github.com/${USER}/seo4ai)** | ${PROJECT_BRIEFS['seo4ai']} | [AuraRank](https://aurarank-five.vercel.app) |
+| **[universal-Shopify-theme](https://github.com/${USER}/universal-Shopify-theme)** | ${PROJECT_BRIEFS['universal-Shopify-theme']} | — |
 
 ---
 

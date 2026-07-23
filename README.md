@@ -33,6 +33,26 @@
 
 ---
 
+### 🚀 Featured Projects
+
+<p align="center">
+  <a href="https://github.com/ankursingh4u/zenith-ai-brain"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=zenith-ai-brain&theme=tokyonight&hide_border=true" alt="zenith-ai-brain" /></a>
+  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
+</p>
+<p align="center">
+  <a href="https://aurarank-five.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=seo4ai&theme=tokyonight&hide_border=true" alt="seo4ai" /></a>
+  <a href="https://github.com/ankursingh4u/universal-Shopify-theme"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=universal-Shopify-theme&theme=tokyonight&hide_border=true" alt="universal-Shopify-theme" /></a>
+</p>
+
+| Project | What it is | Live |
+|---|---|---|
+| **[zenith-ai-brain](https://github.com/ankursingh4u/zenith-ai-brain)** | 🧠 AI “second brain” — a Python engine for capturing & querying knowledge | — |
+| **[PalmInsights](https://github.com/ankursingh4u/PalmInsights)** | 🖐️ AI-powered palm-reading & insights web app | [demo](https://palm-drab.vercel.app) |
+| **[seo4ai](https://github.com/ankursingh4u/seo4ai)** | 📈 AuraRank — AI-driven SEO analysis & ranking toolkit | [AuraRank](https://aurarank-five.vercel.app) |
+| **[universal-Shopify-theme](https://github.com/ankursingh4u/universal-Shopify-theme)** | 🛍️ One Shopify theme, 13 niche presets — auto-adapting colors & content | — |
+
+---
+
 ### 📈 What I've shipped
 
 <p align="center">
@@ -80,12 +100,12 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C516.92-e8734a?style=flat-square" />
-  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.93B-38c7c0?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C519.49-e8734a?style=flat-square" />
+  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.94B-38c7c0?style=flat-square" />
   <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-46-57c98a?style=flat-square" />
 </p>
 
-A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.93B tokens** across 7 models, spanning 05 Mar → 23 Jul 2026.
+A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.94B tokens** across 7 models, spanning 05 Mar → 23 Jul 2026.
 
 📊 **Full interactive dashboard → [ankursingh4u.github.io/ankursingh4u](https://ankursingh4u.github.io/ankursingh4u/)**
 
