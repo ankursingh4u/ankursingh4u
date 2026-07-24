@@ -42,6 +42,40 @@ function run(cmd) {
   return execSync(cmd, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] });
 }
 
+const napMs = ms => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch { /* noop */ } };
+
+// Real all-time lines of code, summed from every repo's git history via GitHub API.
+// Recomputes when `gh` is available; otherwise falls back to the cached loc.json.
+function computeLOC(dateStr) {
+  const cachePath = path.join(HERE, 'loc.json');
+  try {
+    const repos = run(`gh api "users/${USER}/repos?per_page=100" --jq ".[].name"`).trim().split('\n').filter(Boolean);
+    let add = 0, del = 0, counted = 0;
+    for (const r of repos) {
+      let data = null;
+      for (let t = 0; t < 3; t++) {
+        try {
+          const out = run(`gh api "repos/${USER}/${r}/stats/code_frequency"`).trim();
+          if (out.startsWith('[')) { data = JSON.parse(out); break; }
+        } catch { /* 202 computing, or error */ }
+        napMs(2500);
+      }
+      if (Array.isArray(data)) {
+        add += data.reduce((s, w) => s + (w[1] || 0), 0);
+        del += data.reduce((s, w) => s + (w[2] || 0), 0);
+        counted++;
+      }
+    }
+    if (counted > 0) {
+      const loc = { added: add, deleted: Math.abs(del), net: add + del, repos: counted, updated: dateStr };
+      fs.writeFileSync(cachePath, JSON.stringify(loc, null, 2) + '\n');
+      console.log(`✓ lines of code: ${add.toLocaleString('en-US')} added across ${counted} repos`);
+      return loc;
+    }
+  } catch { console.log('· gh unavailable — using cached loc.json'); }
+  try { return JSON.parse(fs.readFileSync(cachePath, 'utf8')); } catch { return null; }
+}
+
 console.log('· fetching ccusage data …');
 const monthly = JSON.parse(run('npx -y ccusage@latest monthly --json')).monthly;
 const dailyRaw = JSON.parse(run('npx -y ccusage@latest --json')).daily;
@@ -120,6 +154,20 @@ const money = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, m
 const badge = (label, val, color) =>
   `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(val)}-${color}?style=flat-square" />`;
 const site = `https://${USER}.github.io/${USER}/`;
+
+console.log('· computing lines of code from GitHub …');
+const loc = computeLOC(generated);
+const bigBadge = (label, val, color, logo = '') =>
+  `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(val)}-${color}?style=for-the-badge${logo ? `&logo=${logo}&logoColor=white` : ''}" />`;
+const locLine = loc ? `<p align="center">
+  ${bigBadge('Lines of code written', loc.added.toLocaleString('en-US'), 'e8734a', 'github')}
+  ${bigBadge('Across', `${loc.repos} repos`, '38c7c0')}
+  ${bigBadge('Net lines shipped', loc.net.toLocaleString('en-US'), '57c98a')}
+</p>
+
+<p align="center"><sub>💪 Real all-time output from git history — that's the hard work.</sub></p>
+
+` : '';
 
 // Preserve the detailed WakaTime block (written by the GitHub Action) across rebuilds
 let wakaBlock = '<!--START_SECTION:waka-->\n_⏳ Detailed coding-activity stats (most-productive time of day, days of the week, languages, editors) will appear here once WakaTime has collected a few days of data._\n<!--END_SECTION:waka-->';
@@ -203,7 +251,7 @@ ${MORE_PROJECTS.map(p => `| **[${p.repo}](https://github.com/${USER}/${p.repo})*
 
 ### 📈 What I've shipped
 
-<p align="center">
+${locLine}<p align="center">
   <img height="170" src="https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&custom_title=Ankur's%20Code%20Output" alt="stats" />
   <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Languages%20I%20write" alt="langs" />
 </p>

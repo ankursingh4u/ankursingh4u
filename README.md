@@ -78,6 +78,14 @@
 ### 📈 What I've shipped
 
 <p align="center">
+  <img alt="Lines of code written" src="https://img.shields.io/badge/Lines%20of%20code%20written-328%2C209-e8734a?style=for-the-badge&logo=github&logoColor=white" />
+  <img alt="Across" src="https://img.shields.io/badge/Across-29%20repos-38c7c0?style=for-the-badge" />
+  <img alt="Net lines shipped" src="https://img.shields.io/badge/Net%20lines%20shipped-293%2C089-57c98a?style=for-the-badge" />
+</p>
+
+<p align="center"><sub>💪 Real all-time output from git history — that's the hard work.</sub></p>
+
+<p align="center">
   <img height="170" src="https://github-readme-stats.vercel.app/api?username=ankursingh4u&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&custom_title=Ankur's%20Code%20Output" alt="stats" />
   <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ankursingh4u&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Languages%20I%20write" alt="langs" />
 </p>
@@ -117,17 +125,17 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 ---
 
 <details>
-<summary>🤖 <b>Bonus: my AI-assisted coding ledger</b> &nbsp;<sub>(auto-updated 23 Jul 2026)</sub></summary>
+<summary>🤖 <b>Bonus: my AI-assisted coding ledger</b> &nbsp;<sub>(auto-updated 24 Jul 2026)</sub></summary>
 
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C520.48-e8734a?style=flat-square" />
-  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.94B-38c7c0?style=flat-square" />
-  <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-46-57c98a?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C540.40-e8734a?style=flat-square" />
+  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.96B-38c7c0?style=flat-square" />
+  <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-47-57c98a?style=flat-square" />
 </p>
 
-A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.94B tokens** across 7 models, spanning 05 Mar → 23 Jul 2026.
+A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.96B tokens** across 7 models, spanning 05 Mar → 24 Jul 2026.
 
 📊 **Full interactive dashboard → [ankursingh4u.github.io/ankursingh4u](https://ankursingh4u.github.io/ankursingh4u/)**
 
