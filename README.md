@@ -35,15 +35,6 @@
 
 ### 🚀 Featured Projects
 
-<p align="center">
-  <a href="https://github.com/ankur4work/LostSearch"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankur4work&repo=LostSearch&theme=tokyonight&hide_border=true" alt="LostSearch" /></a>
-  <a href="https://github.com/ankursingh4u/zenith-ai-brain"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=zenith-ai-brain&theme=tokyonight&hide_border=true" alt="zenith-ai-brain" /></a>
-</p>
-<p align="center">
-  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
-  <a href="https://aurarank-five.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankursingh4u&repo=seo4ai&theme=tokyonight&hide_border=true" alt="seo4ai" /></a>
-</p>
-
 | Project | What it is | Live |
 |---|---|---|
 | **[LostSearch](https://github.com/ankur4work/LostSearch)** | 🔍 Smart site-search app (~30k lines) | — |
@@ -79,23 +70,24 @@
 ### 📈 What I've shipped
 
 <p align="center">
-  <img alt="Lines of code written" src="https://img.shields.io/badge/Lines%20of%20code%20written-1%2C273%2C604-e8734a?style=for-the-badge&logo=github&logoColor=white" />
-  <img alt="Across" src="https://img.shields.io/badge/Across-80%20repos-38c7c0?style=for-the-badge" />
-  <img alt="Net lines shipped" src="https://img.shields.io/badge/Net%20lines%20shipped-1%2C072%2C206-57c98a?style=for-the-badge" />
+  <img alt="Lines of code written" src="https://img.shields.io/badge/Lines%20of%20code%20written-1%2C277%2C869-e8734a?style=for-the-badge&logo=github&logoColor=white" />
+  <img alt="Across" src="https://img.shields.io/badge/Across-81%20repos-38c7c0?style=for-the-badge" />
+  <img alt="Net lines shipped" src="https://img.shields.io/badge/Net%20lines%20shipped-1%2C076%2C471-57c98a?style=for-the-badge" />
 </p>
 
 <p align="center"><sub>💪 Real all-time output from git history — that's the hard work.</sub></p>
 
 <p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=ankursingh4u&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&custom_title=Ankur's%20Code%20Output" alt="stats" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ankursingh4u&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Languages%20I%20write" alt="langs" />
+  <a href="https://github.com/ankursingh4u?tab=repositories"><img alt="Public repos" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/ankursingh4u&label=Public%20repos&query=$.public_repos&color=3178C6&style=for-the-badge&logo=github" /></a>
+  <img alt="Followers" src="https://img.shields.io/github/followers/ankursingh4u?label=Followers&style=for-the-badge&color=38c7c0&logo=github" />
+  <img alt="Building since" src="https://img.shields.io/badge/Building%20since-2021-57c98a?style=for-the-badge" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=ankursingh4u&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
 </p>
 
-<p align="center"><sub>👆 Commits &amp; lines shipped all-time, and my day-by-day coding streak.</sub></p>
+<p align="center"><sub>👆 My day-by-day coding streak &amp; total contributions.</sub></p>
 
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=ankursingh4u&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="activity graph" />
@@ -109,19 +101,7 @@
 _⏳ Detailed coding-activity stats (most-productive time of day, days of the week, languages, editors) will appear here once WakaTime has collected a few days of data._
 <!--END_SECTION:waka-->
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=ankursingh4u&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Coding%20time%20by%20language%20(last%207%20days)" alt="WakaTime languages" />
-</p>
-
-<sub>⏱️ Real editor time — hours, languages &amp; time-of-day · <a href="https://wakatime.com/@ankursingh4u">full breakdown on WakaTime →</a></sub>
-
----
-
-### 🏆 Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ankursingh4u&theme=tokyonight&no-frame=true&column=7&margin-w=8" alt="trophies" />
-</p>
+<sub>⏱️ Real editor time — hours, languages &amp; time-of-day, updated daily · <a href="https://wakatime.com/@ankursingh4u">full breakdown on WakaTime →</a></sub>
 
 ---
 
@@ -131,7 +111,7 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C541.22-e8734a?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C544.61-e8734a?style=flat-square" />
   <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.96B-38c7c0?style=flat-square" />
   <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-47-57c98a?style=flat-square" />
 </p>

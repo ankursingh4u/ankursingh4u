@@ -220,15 +220,6 @@ const readme = `<h1 align="center">Hey, I'm Ankur Singh 👋</h1>
 
 ### 🚀 Featured Projects
 
-<p align="center">
-  <a href="https://github.com/ankur4work/LostSearch"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankur4work&repo=LostSearch&theme=tokyonight&hide_border=true" alt="LostSearch" /></a>
-  <a href="https://github.com/${USER}/zenith-ai-brain"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=zenith-ai-brain&theme=tokyonight&hide_border=true" alt="zenith-ai-brain" /></a>
-</p>
-<p align="center">
-  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
-  <a href="https://aurarank-five.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=seo4ai&theme=tokyonight&hide_border=true" alt="seo4ai" /></a>
-</p>
-
 | Project | What it is | Live |
 |---|---|---|
 | **[LostSearch](https://github.com/ankur4work/LostSearch)** | ${PROJECT_BRIEFS['LostSearch']} | — |
@@ -255,15 +246,16 @@ ${MORE_PROJECTS.map(p => `| **[${p.repo}](https://github.com/${USER}/${p.repo})*
 ### 📈 What I've shipped
 
 ${locLine}<p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&custom_title=Ankur's%20Code%20Output" alt="stats" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Languages%20I%20write" alt="langs" />
+  <a href="https://github.com/${USER}?tab=repositories"><img alt="Public repos" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/${USER}&label=Public%20repos&query=$.public_repos&color=3178C6&style=for-the-badge&logo=github" /></a>
+  <img alt="Followers" src="https://img.shields.io/github/followers/${USER}?label=Followers&style=for-the-badge&color=38c7c0&logo=github" />
+  <img alt="Building since" src="https://img.shields.io/badge/Building%20since-2021-57c98a?style=for-the-badge" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USER}&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
 </p>
 
-<p align="center"><sub>👆 Commits &amp; lines shipped all-time, and my day-by-day coding streak.</sub></p>
+<p align="center"><sub>👆 My day-by-day coding streak &amp; total contributions.</sub></p>
 
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=${USER}&theme=tokyo-night&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="activity graph" />
@@ -275,19 +267,7 @@ ${locLine}<p align="center">
 
 ${wakaBlock}
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=${USER}&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&custom_title=Coding%20time%20by%20language%20(last%207%20days)" alt="WakaTime languages" />
-</p>
-
-<sub>⏱️ Real editor time — hours, languages &amp; time-of-day · <a href="https://wakatime.com/@${USER}">full breakdown on WakaTime →</a></sub>
-
----
-
-### 🏆 Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=${USER}&theme=tokyonight&no-frame=true&column=7&margin-w=8" alt="trophies" />
-</p>
+<sub>⏱️ Real editor time — hours, languages &amp; time-of-day, updated daily · <a href="https://wakatime.com/@${USER}">full breakdown on WakaTime →</a></sub>
 
 ---
 
