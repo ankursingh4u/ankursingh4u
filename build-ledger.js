@@ -159,17 +159,48 @@ const site = `https://${USER}.github.io/${USER}/`;
 
 console.log('· computing lines of code from GitHub …');
 const loc = computeLOC(generated);
-const bigBadge = (label, val, color, logo = '') =>
-  `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(val)}-${color}?style=for-the-badge${logo ? `&logo=${logo}&logoColor=white` : ''}" />`;
-const locLine = loc ? `<p align="center">
-  ${bigBadge('Lines of code written', loc.added.toLocaleString('en-US'), 'e8734a', 'github')}
-  ${bigBadge('Across', `${loc.repos} repos`, '38c7c0')}
-  ${bigBadge('Net lines shipped', loc.net.toLocaleString('en-US'), '57c98a')}
-</p>
 
-<p align="center"><sub>💪 Real all-time output from git history — that's the hard work.</sub></p>
+// live profile numbers (followers, repos, join year) with a safe fallback
+function getProfile() {
+  try {
+    const j = JSON.parse(run(`gh api users/${USER}`));
+    return { followers: j.followers, publicRepos: j.public_repos, since: (j.created_at || '2021').slice(0, 4) };
+  } catch { return { followers: 89, publicRepos: 29, since: '2021' }; }
+}
+const prof = getProfile();
+const nowYear = +generated.slice(-4);
+const locM = loc ? (loc.added / 1e6).toFixed(2) + 'M' : '1.28M';
+const repoN = loc ? loc.repos : prof.publicRepos;
 
-` : '';
+// Big-number highlight block — pure HTML, no external service, always renders
+const statsTable = `<table align="center">
+  <tr>
+    <td align="center" width="175">
+      <h1>💻&nbsp;${locM}</h1>
+      <b>Lines of code</b><br/>
+      <sub>${loc ? loc.added.toLocaleString('en-US') : ''} all-time</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>📦&nbsp;${repoN}</h1>
+      <b>Repositories</b><br/>
+      <sub>shipped &amp; maintained</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>🧑‍💻&nbsp;${prof.followers}</h1>
+      <b>Followers</b><br/>
+      <sub>&amp; counting</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>🚀&nbsp;${prof.since}</h1>
+      <b>Building since</b><br/>
+      <sub>${nowYear - +prof.since} years in</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center"><sub>💪 Real all-time output from git history — <b>over a million lines</b>, that's the hard work.</sub></p>
+
+`;
 
 // Preserve the detailed WakaTime block (written by the GitHub Action) across rebuilds
 let wakaBlock = '<!--START_SECTION:waka-->\n_⏳ Detailed coding-activity stats (most-productive time of day, days of the week, languages, editors) will appear here once WakaTime has collected a few days of data._\n<!--END_SECTION:waka-->';
@@ -245,13 +276,7 @@ ${MORE_PROJECTS.map(p => `| **[${p.repo}](https://github.com/${USER}/${p.repo})*
 
 ### 📈 What I've shipped
 
-${locLine}<p align="center">
-  <a href="https://github.com/${USER}?tab=repositories"><img alt="Public repos" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/${USER}&label=Public%20repos&query=$.public_repos&color=3178C6&style=for-the-badge&logo=github" /></a>
-  <img alt="Followers" src="https://img.shields.io/github/followers/${USER}?label=Followers&style=for-the-badge&color=38c7c0&logo=github" />
-  <img alt="Building since" src="https://img.shields.io/badge/Building%20since-2021-57c98a?style=for-the-badge" />
-</p>
-
-<p align="center">
+${statsTable}<p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USER}&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
 </p>
 

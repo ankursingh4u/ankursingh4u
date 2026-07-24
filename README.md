@@ -69,19 +69,32 @@
 
 ### 📈 What I've shipped
 
-<p align="center">
-  <img alt="Lines of code written" src="https://img.shields.io/badge/Lines%20of%20code%20written-1%2C277%2C869-e8734a?style=for-the-badge&logo=github&logoColor=white" />
-  <img alt="Across" src="https://img.shields.io/badge/Across-81%20repos-38c7c0?style=for-the-badge" />
-  <img alt="Net lines shipped" src="https://img.shields.io/badge/Net%20lines%20shipped-1%2C076%2C471-57c98a?style=for-the-badge" />
-</p>
+<table align="center">
+  <tr>
+    <td align="center" width="175">
+      <h1>💻&nbsp;1.28M</h1>
+      <b>Lines of code</b><br/>
+      <sub>1,277,869 all-time</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>📦&nbsp;81</h1>
+      <b>Repositories</b><br/>
+      <sub>shipped &amp; maintained</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>🧑‍💻&nbsp;89</h1>
+      <b>Followers</b><br/>
+      <sub>&amp; counting</sub>
+    </td>
+    <td align="center" width="175">
+      <h1>🚀&nbsp;2021</h1>
+      <b>Building since</b><br/>
+      <sub>5 years in</sub>
+    </td>
+  </tr>
+</table>
 
-<p align="center"><sub>💪 Real all-time output from git history — that's the hard work.</sub></p>
-
-<p align="center">
-  <a href="https://github.com/ankursingh4u?tab=repositories"><img alt="Public repos" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/ankursingh4u&label=Public%20repos&query=$.public_repos&color=3178C6&style=for-the-badge&logo=github" /></a>
-  <img alt="Followers" src="https://img.shields.io/github/followers/ankursingh4u?label=Followers&style=for-the-badge&color=38c7c0&logo=github" />
-  <img alt="Building since" src="https://img.shields.io/badge/Building%20since-2021-57c98a?style=for-the-badge" />
-</p>
+<p align="center"><sub>💪 Real all-time output from git history — <b>over a million lines</b>, that's the hard work.</sub></p>
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=ankursingh4u&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
@@ -111,12 +124,12 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C544.61-e8734a?style=flat-square" />
-  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.96B-38c7c0?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%242%2C545.40-e8734a?style=flat-square" />
+  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-2.97B-38c7c0?style=flat-square" />
   <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-47-57c98a?style=flat-square" />
 </p>
 
-A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.96B tokens** across 7 models, spanning 05 Mar → 24 Jul 2026.
+A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **2.97B tokens** across 7 models, spanning 05 Mar → 24 Jul 2026.
 
 📊 **Full interactive dashboard → [ankursingh4u.github.io/ankursingh4u](https://ankursingh4u.github.io/ankursingh4u/)**
 
