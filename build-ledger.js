@@ -13,6 +13,7 @@ const HERE = __dirname;
 
 // ── Featured project one-liners — EDIT THESE to your real descriptions ──
 const PROJECT_BRIEFS = {
+  'LostSearch':             '🔍 Smart site-search app (~30k lines)',
   'zenith-ai-brain':        '🧠 AI “second brain” — a Python engine for capturing & querying knowledge',
   'PalmInsights':           '🖐️ AI-powered palm-reading & insights web app',
   'seo4ai':                 '📈 AuraRank — AI-driven SEO analysis & ranking toolkit',
@@ -49,13 +50,14 @@ const napMs = ms => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)
 function computeLOC(dateStr) {
   const cachePath = path.join(HERE, 'loc.json');
   try {
-    const repos = run(`gh api "users/${USER}/repos?per_page=100" --jq ".[].name"`).trim().split('\n').filter(Boolean);
+    // ALL repos the authenticated user can see: owned, private, collaborator, org member
+    const repos = run(`gh api "user/repos?per_page=100&affiliation=owner,collaborator,organization_member" --paginate --jq ".[].full_name"`).trim().split('\n').filter(Boolean);
     let add = 0, del = 0, counted = 0;
-    for (const r of repos) {
+    for (const full of repos) {
       let data = null;
       for (let t = 0; t < 3; t++) {
         try {
-          const out = run(`gh api "repos/${USER}/${r}/stats/code_frequency"`).trim();
+          const out = run(`gh api "repos/${full}/stats/code_frequency"`).trim();
           if (out.startsWith('[')) { data = JSON.parse(out); break; }
         } catch { /* 202 computing, or error */ }
         napMs(2500);
@@ -219,16 +221,17 @@ const readme = `<h1 align="center">Hey, I'm Ankur Singh 👋</h1>
 ### 🚀 Featured Projects
 
 <p align="center">
+  <a href="https://github.com/ankur4work/LostSearch"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ankur4work&repo=LostSearch&theme=tokyonight&hide_border=true" alt="LostSearch" /></a>
   <a href="https://github.com/${USER}/zenith-ai-brain"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=zenith-ai-brain&theme=tokyonight&hide_border=true" alt="zenith-ai-brain" /></a>
-  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
 </p>
 <p align="center">
+  <a href="https://palm-drab.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=PalmInsights&theme=tokyonight&hide_border=true" alt="PalmInsights" /></a>
   <a href="https://aurarank-five.vercel.app"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=seo4ai&theme=tokyonight&hide_border=true" alt="seo4ai" /></a>
-  <a href="https://github.com/${USER}/universal-Shopify-theme"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=universal-Shopify-theme&theme=tokyonight&hide_border=true" alt="universal-Shopify-theme" /></a>
 </p>
 
 | Project | What it is | Live |
 |---|---|---|
+| **[LostSearch](https://github.com/ankur4work/LostSearch)** | ${PROJECT_BRIEFS['LostSearch']} | — |
 | **[zenith-ai-brain](https://github.com/${USER}/zenith-ai-brain)** | ${PROJECT_BRIEFS['zenith-ai-brain']} | — |
 | **[PalmInsights](https://github.com/${USER}/PalmInsights)** | ${PROJECT_BRIEFS['PalmInsights']} | [demo](https://palm-drab.vercel.app) |
 | **[seo4ai](https://github.com/${USER}/seo4ai)** | ${PROJECT_BRIEFS['seo4ai']} | [AuraRank](https://aurarank-five.vercel.app) |
