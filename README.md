@@ -126,7 +126,7 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%241%2C786.70-e8734a?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%241%2C786.94-e8734a?style=flat-square" />
   <img alt="Tokens" src="https://img.shields.io/badge/Tokens-3.08B-38c7c0?style=flat-square" />
   <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-28-57c98a?style=flat-square" />
 </p>
