@@ -67,34 +67,36 @@
 
 ---
 
+### 🆕 Latest builds &nbsp;<sub>· live, sorted by last push, across both accounts</sub>
+
+<!--START_SECTION:latest-->
+| Project | What it is | Live | Last pushed |
+|---|---|---|---|
+| **[Pixoraft](https://github.com/ankur4work/Pixoraft)** | — | — | 2026-10-31 |
+| **[rudranex](https://github.com/ankursingh4u/rudranex)** | — | [demo](https://rudranex.vercel.app) | 2026-10-30 |
+| **[imageAiMax](https://github.com/ankur4work/imageAiMax)** | — | — | 2026-10-30 |
+| **[Shoptrace-Analytics](https://github.com/ankursingh4u/Shoptrace-Analytics)** | — | — | 2026-10-28 |
+| **[Pixovanta](https://github.com/ankursingh4u/Pixovanta)** | — | — | 2026-10-26 |
+| **[booknest](https://github.com/ankursingh4u/booknest)** | — | — | 2026-10-25 |
+| **[bytescompass](https://github.com/ankursingh4u/bytescompass)** | — | [demo](https://bytescompass.vercel.app) | 2026-10-23 |
+| **[nextwaveledger](https://github.com/ankursingh4u/nextwaveledger)** | — | [demo](https://nextwaveledger.vercel.app) | 2026-10-23 |
+<!--END_SECTION:latest-->
+
+---
+
 ### 📈 What I've shipped
 
+<!--START_SECTION:stats-->
 <table align="center">
   <tr>
-    <td align="center" width="175">
-      <h1>💻&nbsp;1.28M</h1>
-      <b>Lines of code</b><br/>
-      <sub>1,277,869 all-time</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>📦&nbsp;81</h1>
-      <b>Repositories</b><br/>
-      <sub>shipped &amp; maintained</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>🧑‍💻&nbsp;89</h1>
-      <b>Followers</b><br/>
-      <sub>&amp; counting</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>🚀&nbsp;2021</h1>
-      <b>Building since</b><br/>
-      <sub>5 years in</sub>
-    </td>
+    <td align="center" width="175"><h1>📦&nbsp;89</h1><b>Repositories</b><br/><sub>shipped &amp; maintained</sub></td>
+    <td align="center" width="175"><h1>🧑‍💻&nbsp;87</h1><b>Followers</b><br/><sub>&amp; counting</sub></td>
+    <td align="center" width="175"><h1>🚀&nbsp;2021</h1><b>Building since</b><br/><sub>5 years in</sub></td>
   </tr>
 </table>
 
-<p align="center"><sub>💪 Real all-time output from git history — <b>over a million lines</b>, that's the hard work.</sub></p>
+<p align="center"><sub>🔄 Live from the GitHub API across both accounts — last refreshed 2026-10-31.</sub></p>
+<!--END_SECTION:stats-->
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=ankursingh4u&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />

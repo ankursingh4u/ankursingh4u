@@ -43,41 +43,6 @@ function run(cmd) {
   return execSync(cmd, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] });
 }
 
-const napMs = ms => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch { /* noop */ } };
-
-// Real all-time lines of code, summed from every repo's git history via GitHub API.
-// Recomputes when `gh` is available; otherwise falls back to the cached loc.json.
-function computeLOC(dateStr) {
-  const cachePath = path.join(HERE, 'loc.json');
-  try {
-    // ALL repos the authenticated user can see: owned, private, collaborator, org member
-    const repos = run(`gh api "user/repos?per_page=100&affiliation=owner,collaborator,organization_member" --paginate --jq ".[].full_name"`).trim().split('\n').filter(Boolean);
-    let add = 0, del = 0, counted = 0;
-    for (const full of repos) {
-      let data = null;
-      for (let t = 0; t < 3; t++) {
-        try {
-          const out = run(`gh api "repos/${full}/stats/code_frequency"`).trim();
-          if (out.startsWith('[')) { data = JSON.parse(out); break; }
-        } catch { /* 202 computing, or error */ }
-        napMs(2500);
-      }
-      if (Array.isArray(data)) {
-        add += data.reduce((s, w) => s + (w[1] || 0), 0);
-        del += data.reduce((s, w) => s + (w[2] || 0), 0);
-        counted++;
-      }
-    }
-    if (counted > 0) {
-      const loc = { added: add, deleted: Math.abs(del), net: add + del, repos: counted, updated: dateStr };
-      fs.writeFileSync(cachePath, JSON.stringify(loc, null, 2) + '\n');
-      console.log(`✓ lines of code: ${add.toLocaleString('en-US')} added across ${counted} repos`);
-      return loc;
-    }
-  } catch { console.log('· gh unavailable — using cached loc.json'); }
-  try { return JSON.parse(fs.readFileSync(cachePath, 'utf8')); } catch { return null; }
-}
-
 console.log('· fetching ccusage data …');
 const monthly = JSON.parse(run('npx -y ccusage@latest monthly --json')).monthly;
 const dailyRaw = JSON.parse(run('npx -y ccusage@latest --json')).daily;
@@ -157,57 +122,20 @@ const badge = (label, val, color) =>
   `<img alt="${label}" src="https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(val)}-${color}?style=flat-square" />`;
 const site = `https://${USER}.github.io/${USER}/`;
 
-console.log('· computing lines of code from GitHub …');
-const loc = computeLOC(generated);
-
-// live profile numbers (followers, repos, join year) with a safe fallback
-function getProfile() {
-  try {
-    const j = JSON.parse(run(`gh api users/${USER}`));
-    return { followers: j.followers, publicRepos: j.public_repos, since: (j.created_at || '2021').slice(0, 4) };
-  } catch { return { followers: 89, publicRepos: 29, since: '2021' }; }
-}
-const prof = getProfile();
-const nowYear = +generated.slice(-4);
-const locM = loc ? (loc.added / 1e6).toFixed(2) + 'M' : '1.28M';
-const repoN = loc ? loc.repos : prof.publicRepos;
-
-// Big-number highlight block — pure HTML, no external service, always renders
-const statsTable = `<table align="center">
-  <tr>
-    <td align="center" width="175">
-      <h1>💻&nbsp;${locM}</h1>
-      <b>Lines of code</b><br/>
-      <sub>${loc ? loc.added.toLocaleString('en-US') : ''} all-time</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>📦&nbsp;${repoN}</h1>
-      <b>Repositories</b><br/>
-      <sub>shipped &amp; maintained</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>🧑‍💻&nbsp;${prof.followers}</h1>
-      <b>Followers</b><br/>
-      <sub>&amp; counting</sub>
-    </td>
-    <td align="center" width="175">
-      <h1>🚀&nbsp;${prof.since}</h1>
-      <b>Building since</b><br/>
-      <sub>${nowYear - +prof.since} years in</sub>
-    </td>
-  </tr>
-</table>
-
-<p align="center"><sub>💪 Real all-time output from git history — <b>over a million lines</b>, that's the hard work.</sub></p>
-
-`;
-
-// Preserve the detailed WakaTime block (written by the GitHub Action) across rebuilds
+// Repo count / followers / latest-builds are owned by .github/workflows/profile-stats.yml
+// (runs in CI against the GitHub API for BOTH accounts — no local `gh` dependency).
+// Preserve those blocks — and the WakaTime block written by waka.yml — across rebuilds.
 let wakaBlock = '<!--START_SECTION:waka-->\n_⏳ Detailed coding-activity stats (most-productive time of day, days of the week, languages, editors) will appear here once WakaTime has collected a few days of data._\n<!--END_SECTION:waka-->';
+let statsBlock = '<!--START_SECTION:stats-->\n_⏳ Populated by profile-stats.yml on its next run._\n<!--END_SECTION:stats-->';
+let latestBlock = '<!--START_SECTION:latest-->\n_⏳ Populated by profile-stats.yml on its next run._\n<!--END_SECTION:latest-->';
 try {
   const prev = fs.readFileSync(path.join(HERE, 'README.md'), 'utf8');
-  const m = prev.match(/<!--START_SECTION:waka-->[\s\S]*?<!--END_SECTION:waka-->/);
-  if (m) wakaBlock = m[0];
+  const mw = prev.match(/<!--START_SECTION:waka-->[\s\S]*?<!--END_SECTION:waka-->/);
+  if (mw) wakaBlock = mw[0];
+  const ms = prev.match(/<!--START_SECTION:stats-->[\s\S]*?<!--END_SECTION:stats-->/);
+  if (ms) statsBlock = ms[0];
+  const ml = prev.match(/<!--START_SECTION:latest-->[\s\S]*?<!--END_SECTION:latest-->/);
+  if (ml) latestBlock = ml[0];
 } catch { /* first run */ }
 
 // tech-stack badge helper (simpleicons via shields.io)
@@ -274,9 +202,17 @@ ${MORE_PROJECTS.map(p => `| **[${p.repo}](https://github.com/${USER}/${p.repo})*
 
 ---
 
+### 🆕 Latest builds &nbsp;<sub>· live, sorted by last push, across both accounts</sub>
+
+${latestBlock}
+
+---
+
 ### 📈 What I've shipped
 
-${statsTable}<p align="center">
+${statsBlock}
+
+<p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=${USER}&theme=tokyonight&hide_border=true" alt="streak — how many days I code" />
 </p>
 
