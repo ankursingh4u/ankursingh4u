@@ -44,25 +44,26 @@ Done. Your profile now shows the stats, and the dashboard is live.
 
 ## Make it auto-update daily (Task Scheduler)
 
-Run this **once** in PowerShell to schedule a daily 9:00 AM refresh:
-
-```powershell
-$action  = New-ScheduledTaskAction -Execute "powershell.exe" `
-  -Argument '-ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\ankur\work\app fix\ledger-site\update.ps1"'
-$trigger = New-ScheduledTaskTrigger -Daily -At 9:00AM
-Register-ScheduledTask -TaskName "AI-Coding-Ledger" -Action $action -Trigger $trigger `
-  -Description "Refresh AI coding ledger and push to GitHub"
-```
-
-From then on it rebuilds from your latest `ccusage` data and pushes — hands-off.
+Registered on this machine (31 Oct 2026) as task **`AI-Coding-Ledger`**, pointing at
+`C:\codershive\ankursingh4u\update.ps1`, daily at 9:00 AM. It rebuilds from your latest
+`ccusage` data and pushes — hands-off.
 
 - **Run it right now to test:** `Start-ScheduledTask -TaskName "AI-Coding-Ledger"`
+- **Check status:** `Get-ScheduledTaskInfo -TaskName "AI-Coding-Ledger"`
 - **Remove it later:** `Unregister-ScheduledTask -TaskName "AI-Coding-Ledger" -Confirm:$false`
+- **Re-register on a new machine/path:**
+  ```powershell
+  $action  = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument '-ExecutionPolicy Bypass -WindowStyle Hidden -File "<path-to-repo>\update.ps1"'
+  $trigger = New-ScheduledTaskTrigger -Daily -At 9:00AM
+  Register-ScheduledTask -TaskName "AI-Coding-Ledger" -Action $action -Trigger $trigger `
+    -Description "Refresh AI coding ledger and push to GitHub"
+  ```
 
 ---
 
 ## Manual refresh anytime
 ```powershell
-cd "C:\Users\ankur\work\app fix\ledger-site"
+cd "C:\codershive\ankursingh4u"
 powershell -ExecutionPolicy Bypass -File update.ps1
 ```
