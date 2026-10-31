@@ -72,6 +72,7 @@
 <!--START_SECTION:latest-->
 | Project | What it is | Live | Last pushed |
 |---|---|---|---|
+| **[ankursingh4u](https://github.com/ankursingh4u/ankursingh4u)** | — | — | 2026-10-31 |
 | **[Pixoraft](https://github.com/ankur4work/Pixoraft)** | — | — | 2026-10-31 |
 | **[rudranex](https://github.com/ankursingh4u/rudranex)** | — | [demo](https://rudranex.vercel.app) | 2026-10-30 |
 | **[imageAiMax](https://github.com/ankur4work/imageAiMax)** | — | — | 2026-10-30 |
@@ -79,7 +80,6 @@
 | **[Pixovanta](https://github.com/ankursingh4u/Pixovanta)** | — | — | 2026-10-26 |
 | **[booknest](https://github.com/ankursingh4u/booknest)** | — | — | 2026-10-25 |
 | **[bytescompass](https://github.com/ankursingh4u/bytescompass)** | — | [demo](https://bytescompass.vercel.app) | 2026-10-23 |
-| **[nextwaveledger](https://github.com/ankursingh4u/nextwaveledger)** | — | [demo](https://nextwaveledger.vercel.app) | 2026-10-23 |
 <!--END_SECTION:latest-->
 
 ---
