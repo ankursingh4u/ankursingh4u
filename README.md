@@ -95,7 +95,7 @@
   </tr>
 </table>
 
-<p align="center"><sub>🔄 Live from the GitHub API across both accounts — last refreshed 2026-10-31.</sub></p>
+<p align="center"><sub>🔄 Live from the GitHub API across both accounts — last refreshed 2026-11-01.</sub></p>
 <!--END_SECTION:stats-->
 
 <p align="center">
