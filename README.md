@@ -72,6 +72,7 @@
 <!--START_SECTION:latest-->
 | Project | What it is | Live | Last pushed |
 |---|---|---|---|
+| **[PalmInsights](https://github.com/ankursingh4u/PalmInsights)** | — | [demo](https://palm-drab.vercel.app) | 2026-11-20 |
 | **[ankursingh4u](https://github.com/ankursingh4u/ankursingh4u)** | — | — | 2026-11-20 |
 | **[store-agent](https://github.com/ankur4work/store-agent)** | — | — | 2026-11-13 |
 | **[Pixoraft](https://github.com/ankur4work/Pixoraft)** | — | — | 2026-10-31 |
@@ -79,7 +80,6 @@
 | **[imageAiMax](https://github.com/ankur4work/imageAiMax)** | — | — | 2026-10-30 |
 | **[Shoptrace-Analytics](https://github.com/ankursingh4u/Shoptrace-Analytics)** | — | — | 2026-10-28 |
 | **[Pixovanta](https://github.com/ankursingh4u/Pixovanta)** | — | — | 2026-10-26 |
-| **[booknest](https://github.com/ankursingh4u/booknest)** | — | — | 2026-10-25 |
 <!--END_SECTION:latest-->
 
 ---
