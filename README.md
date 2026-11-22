@@ -121,17 +121,17 @@ _⏳ Detailed coding-activity stats (most-productive time of day, days of the we
 ---
 
 <details>
-<summary>🤖 <b>Bonus: my AI-assisted coding ledger</b> &nbsp;<sub>(auto-updated 31 Oct 2026)</sub></summary>
+<summary>🤖 <b>Bonus: my AI-assisted coding ledger</b> &nbsp;<sub>(auto-updated 07 Sep 2026)</sub></summary>
 
 <br/>
 
 <p align="center">
-  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%241%2C786.94-e8734a?style=flat-square" />
-  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-3.08B-38c7c0?style=flat-square" />
-  <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-28-57c98a?style=flat-square" />
+  <img alt="AI spend" src="https://img.shields.io/badge/AI%20spend-%24231.99-e8734a?style=flat-square" />
+  <img alt="Tokens" src="https://img.shields.io/badge/Tokens-339.4M-38c7c0?style=flat-square" />
+  <img alt="AI active days" src="https://img.shields.io/badge/AI%20active%20days-24-57c98a?style=flat-square" />
 </p>
 
-A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **3.08B tokens** across 9 models, spanning 07 Sep → 31 Oct 2026.
+A running tally of the AI tooling I code with (Claude + Codex), read locally with <a href="https://github.com/ryoppippi/ccusage"><code>ccusage</code></a> — **339.4M tokens** across 3 models, spanning 05 Mar → 07 Sep 2026.
 
 📊 **Full interactive dashboard → [ankursingh4u.github.io/ankursingh4u](https://ankursingh4u.github.io/ankursingh4u/)**
 
