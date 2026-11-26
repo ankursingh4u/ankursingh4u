@@ -72,14 +72,14 @@
 <!--START_SECTION:latest-->
 | Project | What it is | Live | Last pushed |
 |---|---|---|---|
-| **[ankursingh4u](https://github.com/ankursingh4u/ankursingh4u)** | — | — | 2026-11-25 |
+| **[craftharmoney](https://github.com/ankursingh4u/craftharmoney)** | — | — | 2026-11-26 |
+| **[palm-line-detector](https://github.com/ankursingh4u/palm-line-detector)** | Deterministic CV palm-line detection service (FastAPI wrapper around yeonsumia/palmistry) for PalmInsight | — | 2026-11-26 |
+| **[ankursingh4u](https://github.com/ankursingh4u/ankursingh4u)** | — | — | 2026-11-26 |
 | **[PalmInsights](https://github.com/ankursingh4u/PalmInsights)** | — | [demo](https://palm-drab.vercel.app) | 2026-11-24 |
 | **[CountDown](https://github.com/ankursingh4u/CountDown)** | — | — | 2026-11-24 |
 | **[store-agent](https://github.com/ankur4work/store-agent)** | — | — | 2026-11-13 |
 | **[Pixoraft](https://github.com/ankur4work/Pixoraft)** | — | — | 2026-10-31 |
 | **[rudranex](https://github.com/ankursingh4u/rudranex)** | — | [demo](https://rudranex.vercel.app) | 2026-10-30 |
-| **[imageAiMax](https://github.com/ankur4work/imageAiMax)** | — | — | 2026-10-30 |
-| **[Shoptrace-Analytics](https://github.com/ankursingh4u/Shoptrace-Analytics)** | — | — | 2026-10-28 |
 <!--END_SECTION:latest-->
 
 ---
@@ -89,7 +89,7 @@
 <!--START_SECTION:stats-->
 <table align="center">
   <tr>
-    <td align="center" width="175"><h1>📦&nbsp;89</h1><b>Repositories</b><br/><sub>shipped &amp; maintained</sub></td>
+    <td align="center" width="175"><h1>📦&nbsp;91</h1><b>Repositories</b><br/><sub>shipped &amp; maintained</sub></td>
     <td align="center" width="175"><h1>🧑‍💻&nbsp;87</h1><b>Followers</b><br/><sub>&amp; counting</sub></td>
     <td align="center" width="175"><h1>🚀&nbsp;2021</h1><b>Building since</b><br/><sub>5 years in</sub></td>
   </tr>
