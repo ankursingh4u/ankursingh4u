@@ -72,8 +72,8 @@
 <!--START_SECTION:latest-->
 | Project | What it is | Live | Last pushed |
 |---|---|---|---|
+| **[PalmInsights](https://github.com/ankursingh4u/PalmInsights)** | — | [demo](https://palm-drab.vercel.app) | 2026-11-27 |
 | **[ankursingh4u](https://github.com/ankursingh4u/ankursingh4u)** | — | — | 2026-11-27 |
-| **[PalmInsights](https://github.com/ankursingh4u/PalmInsights)** | — | [demo](https://palm-drab.vercel.app) | 2026-11-26 |
 | **[craftharmoney](https://github.com/ankursingh4u/craftharmoney)** | — | — | 2026-11-26 |
 | **[palm-line-detector](https://github.com/ankursingh4u/palm-line-detector)** | Deterministic CV palm-line detection service (FastAPI wrapper around yeonsumia/palmistry) for PalmInsight | — | 2026-11-26 |
 | **[CountDown](https://github.com/ankursingh4u/CountDown)** | — | — | 2026-11-24 |
@@ -95,7 +95,7 @@
   </tr>
 </table>
 
-<p align="center"><sub>🔄 Live from the GitHub API across both accounts — last refreshed 2026-11-27.</sub></p>
+<p align="center"><sub>🔄 Live from the GitHub API across both accounts — last refreshed 2026-11-28.</sub></p>
 <!--END_SECTION:stats-->
 
 <p align="center">
